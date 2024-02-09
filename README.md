@@ -23,7 +23,11 @@ GameHub is a online application that will display games, allow you to view thier
 
 # ERD
 
-![ERD](IMGs/ERD2.png)
+![ERD](IMGs/ERD.png)
+
+# Data Flow
+
+![Data Flow](<IMGs/Data Flow 2.png>)
 
 # Technologies Used
 

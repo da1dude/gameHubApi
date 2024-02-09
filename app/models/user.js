@@ -1,8 +1,38 @@
 const mongoose = require('mongoose')
 
+/////////////////////////
+// Schema definition ////
+/////////////////////////
+
+const profileSchema = new Schema({
+    firstName: { type: String, 
+		required: true 
+	},
+    lastName: { type: String
+	},
+    lastName: { type: String 
+	},
+    user: { type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
+}, {
+    timestamps: true
+})
+
+/////////////////////////
+// Schema definition ////
+/////////////////////////
+
+
 const userSchema = new mongoose.Schema(
 	{
 		email: {
+			type: String,
+			required: true,
+			unique: true,
+		},
+		user: {
 			type: String,
 			required: true,
 			unique: true,
@@ -11,6 +41,7 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		profile: [profileSchema],
 		token: String,
 	},
 	{

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const Schema = mongoose.Schema
+
 /////////////////////////
 // Schema definition ////
 /////////////////////////
@@ -8,9 +10,7 @@ const profileSchema = new Schema({
     firstName: { type: String, 
 		required: true 
 	},
-    lastName: { type: String
-	},
-    lastName: { type: String 
+    lastName: { type: String, 
 	},
     user: { type: Schema.Types.ObjectId,
         ref: 'User',

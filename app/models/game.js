@@ -19,11 +19,11 @@ const gameSchema = new mongoose.Schema(
 			required: true,
 		},
 		score: {
-			type: Integer,
+			type: String,
 			required: true,
 		},
 		comment: {
-			type: Integer,
+			type: String,
 			required: true,
 		},
 		owner: {
@@ -34,7 +34,13 @@ const gameSchema = new mongoose.Schema(
 	},
 	{
 		timestamps: true,
+	},
+	{
+		timestamps: true,
+		toObject: { virtuals: true},
+		toJSON: { virtuals: true}
 	}
 )
+
 
 module.exports = mongoose.model('Game', gameSchema)

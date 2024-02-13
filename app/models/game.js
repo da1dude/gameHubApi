@@ -18,13 +18,12 @@ const gameSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		score: {
+		rating: {
 			type: String,
 			required: true,
 		},
 		comment: {
 			type: String,
-			required: true,
 		},
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,

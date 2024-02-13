@@ -25,6 +25,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
 
+
 // SIGN UP
 // POST /sign-up
 router.post('/sign-up', (req, res, next) => {
@@ -46,7 +47,7 @@ router.post('/sign-up', (req, res, next) => {
 		.then((hash) => {
 			// return necessary params to create a user
 			return {
-				user: req.body.credentials.user,
+				userName: req.body.credentials.userName,
 				email: req.body.credentials.email,
 				hashedPassword: hash,
 			}
@@ -60,7 +61,6 @@ router.post('/sign-up', (req, res, next) => {
 		.catch(next)
 })
 
-
 // SIGN IN
 // POST /sign-in
 router.post('/sign-in', (req, res, next) => {
@@ -69,7 +69,7 @@ router.post('/sign-in', (req, res, next) => {
 
 	// find a user based on the email that was passed
 	User.findOne({ $or: [
-		{user: req.body.credentials.user },
+		{userName: req.body.credentials.userName },
 		{ email: req.body.credentials.email }
 	]})
 		.then((record) => {

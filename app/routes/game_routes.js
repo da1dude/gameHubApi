@@ -19,6 +19,7 @@ const requireOwnership = customErrors.requireOwnership
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
 const removeBlanks = require('../../lib/remove_blank_fields')
+const user = require('../models/user')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -30,7 +31,9 @@ const router = express.Router()
 // INDEX
 // GET /games
 router.get('/games', requireToken, (req, res, next) => {
-	Game.find()
+	ownerId = req.user.id
+	Game.find({owner: `${ownerId}`})
+		.populate('owner')
 		.then((games) => {
 			// `Games` will be an array of Mongoose documents
 			// we want to convert each one to a POJO, so we use `.map` to

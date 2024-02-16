@@ -20,7 +20,9 @@ const gameSchema = new mongoose.Schema(
 		},
 		rating: {
 			type: String,
-			required: true,
+		},
+		released: {
+			type: String,
 		},
 		comment: {
 			type: String,
